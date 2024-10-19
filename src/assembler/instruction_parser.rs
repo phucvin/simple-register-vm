@@ -34,6 +34,17 @@ impl AssemblerInstruction {
                     operand3: None,
                 })
             }
+            Opcode::ADD => {
+                let register1 = Token::parse_register(str_token[1]);
+                let register2 = Token::parse_register(str_token[2]);
+                let register3 = Token::parse_register(str_token[3]);
+                Ok(AssemblerInstruction {
+                    opcode: opcode_token,
+                    operand1: register1,
+                    operand2: register2,
+                    operand3: register3,
+                })
+            }
             _ => Err("Line is an Illegal operation"),
         }
     }
